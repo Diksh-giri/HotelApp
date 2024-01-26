@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
+
+
+<script>
+            function updateMinDate() {
+              const today = new Date();
+  
+              const formattedDate = today.toISOString().split('T')[0];
+  
+              document.getElementById('checkIn').value = formattedDate;
+  
+              document.getElementById('checkIn').min = formattedDate;
+          }
+  
+          window.onload = updateMinDate;
+          fetch('http://localhost:8805/hotel/room').then(response => response.json()).then(data => {
+          displayRoomDataInTable(data);
+        })
+        .catch(error => console.error('Error fetchong data:', error));
+
+        function displayRoomDataInTable(data) {
+            for (let i = 0; i < data.length; i++) {
+                const room = data[i];
+                const roomTypeElement = document.getElementById(`roomType${i + 1}`);
+                const availableElement = document.getElementById(`available${i + 1}`);
+                const priceElement = document.getElementById(`price${i + 1}`);
+
+                if (roomTypeElement && availableElement && priceElement) {
+                    roomTypeElement.textContent = room.roomType; 
+                    availableElement.textContent = room.available; 
+                    priceElement.textContent = `${room.price}`; 
+                }
+            }
+        }
+
+
+      </script>
+
+      <style>
+        th, td{
+            padding: 5px;
+        }
+      </style>
+    <title>Booking</title>
+</head>
+<body>
+    <header class="header" id="navigation-menu">
+        <div class="container">
+            <nav class="nav-container">
+                <a href="./index.html" class="logo">
+                    <img src="images/logo.png" alt="Picture of Logo" class="logo-img">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="./index.html#home" class="nav-link">Home</a></li>
+                    <li><a href="./index.html#about" class="nav-link">About</a></li>
+                    <li><a href="./index.html#rooms" class="nav-link">Rooms</a></li>
+                    <li><a href="./index.html#restaurant" class="nav-link">Restaurant</a></li>
+                    <li><a href="./index.html#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="./index.html#map" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="toggler">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>  
+    <script>
+        const toggler = document.querySelector('.toggler');
+        const navMenu = document.querySelector('.nav-menu');
+    
+        toggler.addEventListener("click",mobileMenu);
+    
+        function mobileMenu(){
+            toggler.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        }
+    
+        const navLink = document.querySelectorAll('.nav-link');
+        navLink.forEach((n) => n.addEventListener("click",closeMenu));
+    
+        function closeMenu(){
+            toggler.classList.remove("active");
+            navMenu.classList.remove("active");
+        }
+    </script> 
+    <img src="images/home1.jpg"  class="slide1">
+    <section class="available">
+        <div class="container2">
+            <div class=" input box">
+                    <div class="box1">
+                        <div class="headi">
+                        <h1 style="text-align: center;">AVAILABLE</h1>
+                    </div>
+                    <table class="table" id="roomTable">
+                        <thead>
+                        <tr>
+                            <th>Room Type</th>
+                            <th>Availability</th>
+                            <th>Price '$'</th>
+                        </tr>
+                        </thead>
+                        <tbody id="roomTableBody">
+                        <tr>
+                            <td><span id="roomType1"></span></td>
+                            <td><span id="available1"></span></td>
+                            <td><span id="price1"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span id="roomType2"></span></td>
+                            <td><span id="available2"></span></td>
+                            <td><span id="price2"></span></td>
+                        </tr>
+                        <tr>
+                            <td><span id="roomType3"></span></td>
+                            <td><span id="available3"></span></td>
+                            <td><span id="price3"></span></td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                </div> 
+    </section>
+    <section class="main1">
+    <div class="container2">
+        <div class="book-headin">
+            <h1 class="headin">BOOK NOW</h1>
+        <div class=" input box">
+            
+                <div class="box1">
+                    <div class="headi">
+                    <h1>Customer</h1>
+                </div>
+                <div class="item11">
+                    <label id="name-label">Name</label>
+                    <input type="text" name="name" id="name" placeholder="" value="">
+                    </div>
+                <div class="item12">
+                    <label id="phone-label">Phone</label>
+                    <input type="tel" id="phone" name="phone" placeholder="977-6654125874" pattern="[0-9]{3}-[0-9]{10}" required value="">
+                </div>
+                <div class="item13">
+                    <label id="address-label">Address</label>
+                    <input type="text" name="address" id="address" placeholder="" value="">
+                </div>
+                <div class="item14">
+                    <label id="payment-label">Payment</label>
+                    <select name="payment" id="payment" value="Card">
+                        <option value="Card" class="payment">Card</option>
+                        <option value="Cash" class="payment">Cash</option>
+                        <option value="Online" class="payment">Online</option>
+                      </select>  
+                </div> 
+                </div> 
+                <div class="box2">
+                    <div class="headi">
+                        <h1>Room</h1>
+                    </div>
+                        <div class="item21">
+                            <label id="checkIn-label">Check-In: </label>
+                            <input type="date" name="checkIn" id="checkIn" placeholder="" value="">
+                            </div>
+                        <div class="item22">
+                            <label id="stayDays-label">Number of Stay Days </label>
+                            <input type="number" name="stayDays" id="stayDays" placeholder="" value="1">
+                        </div>
+                        <div class="item23">
+                            <label id="people-label">People</label>
+                            <input type="number" name="people" id="people" placeholder="0" value = "">
+                        </div>
+                        <div class="item24">
+                        <label id="roomType-label">Room Type</label>
+                        <select name="roomType" id="roomType" value = "Single">
+                            <option value="Single" class="roomType">Single</option>
+                            <option value="Deluxe" class="roomType">Deluxe</option>
+                            <option value="Super_Deluxe" class="roomType">Super Deluxe</option>
+                          </select>
+                        </div>
+                        <div class="item25">
+                            <label id="roomNump-label">Number of Rooms</label>
+                            <input type="number" name="roomNum" id="roomNum" placeholder="0" value = "1">
+                        </div>
+                    </div>
+                        </div>
+                </div>  
+                <div class="Book Now">
+                    <button class="btn-btn" id="book-now" type="submit">BOOK NOW</button>
+                </div>  
+        </div>   
+    </div>
+    </div>
+</section>
+
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class = "invoice-btns">
+        <button type = "button" class = "invoice-btn" onclick="printInvoice()">
+            <span class="material-symbols-outlined">
+                print
+                </span>
+            <span style="font-size: 15px;">Print</span>
+        </button>
+        <button type = "button" class = "invoice-btn" id="download" onclick="downloadPDF()">
+            <span class="material-symbols-outlined">
+                download
+                </span>
+            <span style="font-size: 15px;">Download</span>
+        </button>
+    </div>
+    <div class="invoice-box" id="invoice">
+        <table>
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="./images/logo.png" alt="Company logo" style="width: 100%; max-width: 300px" />
+                            </td>
+
+                            <td>
+                                Invoice<br />
+                                Created: <span id ="span-date"></span>
+                                <br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                Ethereal Hotel & Resorts<br />
+                                11145 Upside<br />
+                                Sparrowtown, Caribbean.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr class="heading">
+                <td>Customer</td>
+
+                <td></td>
+            </tr>
+
+            <tr class="item">
+                <td>Name</td>
+
+                <td><span id="invoiceName"></span></td>
+            </tr>
+            <tr class="item">
+                <td>Contact</td>
+
+                <td><span id="invoicePhone"></span></td>
+                <tr class="item">
+                <td>Address</td>
+
+                <td><span id="invoiceAddress"></span></td>
+            </tr>
+            <tr class="item">
+            <td>Payment</td>
+
+            <td><span id="invoicePayment"></span></td>
+        </tr>
+
+            <tr class="heading">
+                <td>Room</td>
+
+                <td></td>
+            </tr>
+
+            <tr class="item">
+                <td>Type</td>
+
+                <td><span id="invoiceRoomType"></span></td>
+            </tr>
+
+            <tr class="item">
+                <td>Number of Rooms</td>
+
+                <td><span id="invoiceRoomNum"></span></td>
+            </tr>
+            <tr class="item">
+                <td>Stay Days</td>
+
+                <td><span id="invoiceStayDays"></span></td>
+            </tr>
+
+            <tr class="item">
+                <td>Price</td>
+
+                <td><span id="invoicePrice"></span></td>
+            </tr>
+
+            <tr class="total">
+                <td></td>
+
+                <td>Total: <span id="invoiceTotal"></span></td>
+            </tr>
+            <tr class="discount">
+                <td></td>
+
+                <td>Discount: <span id="invoiceDiscount"></span></td>
+            </tr>
+            <tr class="grandTotal">
+                <td></td>
+
+                <td>Grand Total: <span id="invoiceGrandTotal"></span></td>
+            </tr>
+        </table>
+    </div>
+  </div>
+
+<script>
+let modal = document.getElementById("myModal");
+let btn = document.getElementById("book-now");
+let span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+     document.addEventListener('DOMContentLoaded', () => {
+
+        const submit = document.getElementById('book-now');
+        console.log('check');
+        submit.addEventListener('click' , saveData);
+    });
+
+        const saveData = async() => {
+          console.log('check2');
+        const customerName = document.getElementById('name').value;
+        const customerPhone = document.getElementById('phone').value;
+        const  customerAddress = document.getElementById('address').value;
+        const customerPayment = document.getElementById('payment').value;
+        console.log(`${customerName},${customerPhone},${customerAddress},${customerPayment}`)
+        console.log("API HI");
+
+         const roomType = document.getElementById('roomType').value;
+         let bookingPrice = 0;
+        if(roomType === 'Single'){
+            bookingPrice = parseFloat(document.getElementById('price1').textContent);
+        }else if(roomType === 'Deluxe'){
+            bookingPrice = parseFloat(document.getElementById('price2').textContent);
+        }else if(roomType === 'Super_Deluxe'){
+            bookingPrice = parseFloat(document.getElementById('price3').textContent);
+        }
+        const checkIn = document.getElementById('checkIn').value;
+        let stayDays = parseInt(document.getElementById('stayDays').value, 10);
+        console.log(stayDays);
+        let roomNum = parseInt(document.getElementById('roomNum').value, 10);
+        console.log(roomNum);
+        const people = document.getElementById('people').value;
+        console.log(bookingPrice);
+        let total = roomNum * bookingPrice * stayDays;
+        console.log(total)
+        let discount = 0;
+        if(roomNum >= 3){
+             discount = 0.05; 
+        }
+        let grandTotal = total-(total * discount);
+
+    document.getElementById('invoiceName').textContent = customerName;
+    document.getElementById('invoicePhone').textContent = customerPhone;
+    document.getElementById('invoiceAddress').textContent = customerAddress;
+    document.getElementById('invoicePayment').textContent = customerPayment;
+    document.getElementById('invoiceRoomType').textContent = roomType;
+    document.getElementById('invoiceRoomNum').textContent = roomNum;
+    document.getElementById('invoiceStayDays').textContent = stayDays;
+    document.getElementById('invoicePrice').textContent = bookingPrice;
+    document.getElementById('invoiceTotal').textContent = `$${total}`;
+    document.getElementById('invoiceDiscount').textContent = `${discount*100} %`;
+    document.getElementById('invoiceGrandTotal').textContent = `$${grandTotal}`;
+
+        const requestData = {
+                customerName : customerName,
+                customerPhone : customerPhone,
+                customerAddress : customerAddress,
+                customerPayment : customerPayment,
+            checkIn : checkIn,
+            stayDays : stayDays,
+            roomType: roomType,
+            bookingPrice : bookingPrice,
+            roomNum : roomNum,
+            people : people,
+            total : total,
+            discount : discount,
+            grandTotal : grandTotal,
+        }
+
+        console.log(grandTotal);
+        let response = await fetch('http://localhost:8805/hotel/booking',{
+        method: 'POST',
+        headers: {
+            'Accept' : 'application/json',
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(requestData)
+    })
+
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('address').value = '';
+    const today = new Date();
+    const formattedDate = today.toISOString().split('T')[0];
+    document.getElementById('checkIn').value = formattedDate;
+    document.getElementById('stayDays').value = '1';
+    document.getElementById('people').value = '1';
+    document.getElementById('stayDays').value = '1';
+    document.getElementById('roomNum').value = '1';
+
+    }
+    const today = new Date();
+
+            const formattedDate = today.toISOString().split('T')[0];
+            console.log(formattedDate);
+
+            document.getElementById('span-date').innerText= formattedDate;
+               
+            function printInvoice(){
+            window.print();
+        }
+            function downloadPDF() {
+                console.log('download')
+            // Get the specific div to be converted
+            const invoice = document.getElementById('invoice');
+
+            // Configuration for html2pdf
+            const options = {
+                margin: 10,
+                filename: 'invoice.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 3 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().from(invoice).set(options).save();
+        }
+</script>
+</body>
+</html>

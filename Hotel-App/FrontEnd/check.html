@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <title>Booking</title>
+    <script>
+      function updateMinDate() {
+            const today = new Date();
+
+            const formattedDate = today.toISOString().split('T')[0];
+
+            document.getElementById('checkIn').value = formattedDate;
+
+            document.getElementById('checkIn').min = formattedDate;
+        }
+
+        window.onload = updateMinDate;
+    </script>
+</head>
+<body>
+    <header class="header" id="navigation-menu">
+        <div class="container">
+            <nav class="nav-container">
+                <a href="./index.html" class="logo">
+                    <img src="images/logo.png" alt="Picture of Logo" class="logo-img">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="./index.html#home" class="nav-link">Home</a></li>
+                    <li><a href="./index.html#about" class="nav-link">About</a></li>
+                    <li><a href="./index.html#rooms" class="nav-link">Rooms</a></li>
+                    <li><a href="./index.html#restaurant" class="nav-link">Restaurant</a></li>
+                    <li><a href="./index.html#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="./index.html#map" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="toggler">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>  
+    <script>
+        const toggler = document.querySelector('.toggler');
+        const navMenu = document.querySelector('.nav-menu');
+    
+        toggler.addEventListener("click",mobileMenu);
+    
+        function mobileMenu(){
+            toggler.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        }
+    
+        const navLink = document.querySelectorAll('.nav-link');
+        navLink.forEach((n) => n.addEventListener("click",closeMenu));
+    
+        function closeMenu(){
+            toggler.classList.remove("active");
+            navMenu.classList.remove("active");
+        }
+    </script> 
+    <img src="images/home1.jpg"  class="slide1">
+    <section class="main1">
+    <div class="container2">
+        <div class="book-headin">
+            <h1 class="headin">CHECK AVAILABILITY</h1>
+            <div class="box2">
+                  <div class="item21">
+                      <label id="checkInLabel">Check-In: </label>
+                      <input type="date" name="checkIn" id="checkIn" min="" value="">
+                      </div>
+                  <div class="item24">
+                  <label id="roomType">Room Type</label>
+                  <select name="roomType" id="roomType">
+                      <option value="Single" class="roomType">Single</option>
+                      <option value="Deluxe" class="roomType">Deluxe</option>
+                      <option value="Super_Deluxe" class="roomType">Super Deluxe</option>
+                    </select>
+                  </div>
+                  <a href="./booking.html" id="check">CHECK</a>
+              </div>
+        </div> 
+          
+      </div>
+    </div>
+</section>
+</body>
+</html>

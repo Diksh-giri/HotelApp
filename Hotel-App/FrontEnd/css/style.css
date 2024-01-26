@@ -1,0 +1,730 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html , body{
+
+    font-family: 'Roboto', sans-serif;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.container{
+    max-width: 80%;
+    margin: auto;
+}
+.head-container{
+    max-width: 90%;
+    margin: auto;
+}
+.flex{
+    display: flex;
+    
+}
+.grid{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 270px 270px 270px ;
+}
+/*------------header-----------*/
+header{
+    height: 15vh;
+    width: 100%;
+}
+.logo-img{
+    width:200px
+}
+header nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6px;
+}
+.toggler{
+    display: none;
+}
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+header ul{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 50px;
+}
+header ul li a{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    transition: 0.5s;
+}
+header ul li a:hover{
+    color: #c1B086;
+
+}
+.btn-btn1{
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Dancing Script', cursive;
+    line-height: 30px;
+    letter-spacing: 3px;
+    margin: 10;
+    padding: 20px;
+    color: white;
+    border: 5px solid white;
+    border-radius: 30px;
+}
+@media only screen and (max-width:768px) {
+    header ul{
+        padding-top:10px ;
+        padding-bottom: 10px;
+        display: flex;
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: #263760;
+        width: 100%;
+        height: 30%;
+        border-radius: 10px;
+        text-align: justify;
+        transition: 0.5s;
+        box-shadow: 0 10px 27px rgba(0,0,0,0.5);
+        z-index: 20;
+    }
+    header ul.active{
+        left: 0%
+    }
+    header ul li a{
+        color: white;
+        font-size: 30px;
+        text-shadow: 2px 2px 4px white;
+    }
+    .toggler{
+        display: block;
+        cursor: pointer;
+    }
+    .toggler.active .bar:nth-child(2){
+        opacity:0;
+    }
+    .toggler.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .toggler.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+/*-------------header--------------*/
+.slide1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+/*---------------home---------------*/
+.home .img img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+}
+.home .text{
+    max-width: 50%;
+    color: white;
+    margin: 10% 0 0 10%;
+}
+.home h1{
+    font-size: 80px;
+    font-weight: 600;
+}
+.home p{
+    font-weight: 500;
+    line-height: 25px;
+    font-family: sans-serif;
+    font-size: 20px;
+    margin: 50px 0 0 50px;
+}
+button{
+    padding: 20px 40px;
+    font-size: 20px;
+    background: none;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 20px;
+    color: white;
+    margin-top: 20px;
+}
+.home button{
+    margin-left: 50px;
+}
+.home .img-item{
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer; 
+}
+.home .img-item img{
+    width: 140px;
+    height: 94px;
+    margin: 10px;
+    transition: .05s;
+}
+.home .img-item img.active{
+    border: 2px solid white;
+}
+.home .box .text{
+    position: relative;
+}
+.home .box .text::after{
+    position: absolute;
+    content: 'H';
+    font-size: 500px;
+    top: -50%;
+    left: 5%;
+    z-index: -1;
+    font-weight: bold;
+    opacity: 0.1;
+}
+/*----------------home----------------------*/
+
+/*----------------Boooking--------------------*/
+
+.book{
+    margin-top: 5%;
+    width: 100%;
+    height: 10%;
+    color: white;
+}
+
+.book .box{
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    outline: none;
+    background: #263760;
+    margin-top: 15px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+.btn-btn{
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Dancing Script', cursive;
+    line-height: 30px;
+    letter-spacing: 3px;
+    margin: 10;
+    padding: 20px;
+    color: white;
+    border: 5px solid white;
+    border-radius: 30px;
+}
+
+/*-----------Booking-----------*/
+
+/*---------------about------------------*/
+.top{
+    margin-top: 10%;
+}
+.mtop{
+    margin-top: 5%;
+}
+.left,.right{
+    width: 50%;
+}
+.about{
+    margin-bottom: 50px;
+}
+.about .image{
+    position: relative;
+}
+.about .image1{
+    width: 400px;
+    height: 450px;
+}
+.about .image2 {
+    width: 325px;
+    height: 220px;
+    position: absolute;
+    bottom: 5px;
+    z-index: 2;
+    right: 30%;
+}
+.heading{
+    position: relative;
+}
+.heading::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100px;
+    height: 4px;
+    background: #c1b086;
+}
+.heading h5{
+font-weight: 600;
+letter-spacing: 2px;
+padding-top: 20px;
+color: #5f5f5f;
+}
+.heading h2{
+    font-size: 30px;
+    font-weight: 600;
+    margin: 20px 0 40px 0;
+    color: #222222;
+}
+.heading p{
+    margin-bottom: 20px;
+    line-height: 25px;
+    color: #5f5f5f;
+    margin: 0 0 20px 50px;
+}
+.heading .btn1{
+    margin: 50px 0 20px 50px;
+}
+.btn1{
+    background: #c1b086;
+    color: white;
+}
+/*-----------about----------*/
+
+/*-------------wrapper--------------*/
+.wrapper{
+    background-image: url("/images/swim.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 550px;
+    position: relative;
+}
+.wrapper .text{
+    background: #3f9cc1;
+padding-left: 30px;
+    width: 40%;
+    height: 600px;
+    position: absolute;
+    top: -13%;
+    right: 10%;
+    padding-top: 5%;
+    color: white;
+}
+.wrapper .content{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-row-gap: 30px;
+}
+.wrapper h2{
+    font-weight: 400;
+}
+.wrapper p{
+    margin: 20px 0 50px 0;
+    line-height: 30px;
+}
+.wrapper i{
+    margin: 5px 20px 0 0;
+}
+/*-----------wrapper----------*/
+.flex1{
+    display: flex;
+    justify-content: space-between;
+}
+#grid1{
+    display: flex;
+    justify-content: center;
+}
+.room img{
+    width: 500px;
+    height: 400px;
+}
+.room .box{
+    box-shadow: 0 13px 43px 0 rgb(37, 46, 89/10%);
+}
+.room .text{
+    padding: 20px;
+}
+.room h3{
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.room p span{
+    font-size: 12px;
+    color: grey;
+}
+.room p{
+    font-size: 20px;
+}
+/*-----------wrapper------------*/
+/*--------------restaurant----------------*/
+.restaurant img{
+    width: 100%;
+    height: 100%;
+}
+.restaurant .right{
+    padding: 50px;
+}
+.restaurant h2{
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+.restaurant .text p{
+    margin-bottom: 50px;
+    line-height: 25px;
+}
+.restaurantItem{
+    margin-top: 30px;
+}
+.restaurantItem p{
+    font-size: 16px;
+    opacity: 0.8;
+    font-family: sans-serif;
+    line-height: 20px;
+}
+.restaurantItemHeading{
+    cursor: pointer;
+    width: 100%;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 17px;
+    color: #c1B086;
+    margin-bottom: 20px;
+}
+.close .restaurantItemContent{
+    height: 0px;
+    transition: height ls ease-out;
+    transform: scaleY(0);
+    float: left;
+    display: block;
+    background-color: white;
+}
+.open .restaurantItemContent{
+    padding: 30px;
+    background-color: white;
+    width: 100%;
+    margin: 0 0 10px 0;
+    display: block;
+    transform: scaleY(1);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+    box-sizing: border-box;
+    box-shadow: 0 13px 43px 0 reg(37, 46, 89 / 10%);
+}
+
+/*-----------------------restaurant-------------*/
+/*--------gallery------------*/
+.gallery img {
+    width: 270px;
+    height: 350px;
+  }
+  
+  .owl-carousel .owl-next,
+  .owl-carousel .owl-prev {
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    cursor: pointer;
+    top: 35%;
+    background: white !important;
+    transition: 0.5s;
+  }
+  
+  .owl-carousel .owl-prev {
+    left: 33px;
+  }
+  
+  .owl-carousel .owl-next {
+    right: 33px;
+  }
+  
+  .owl-carousel .owl-next:hover,
+  .owl-carousel .owl-prev:hover {
+    background: #C1B086 !important;
+  }
+  /*--------------gallery------------*/
+
+/*-------------map-----------------*/
+.map iframe{
+    width: 100%;
+}
+/*-------------map-----------------*/
+/*--------------footer-----------------*/
+.grid1{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(4,1fr);
+}
+footer p{
+    font-size: 17px;
+    font-weight: 600;
+}
+footer h3{
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+footer li{
+    margin-bottom: 15px;
+    transition: 0.5s;
+    font-weight: 600;
+    font-size: 17px;
+}
+footer li:hover{
+    color: #c1B086;
+    cursor: pointer;
+}
+@media only screen and (max-width:768px) {
+    .home.box.text{
+        max-width: 100%;
+    }
+    .home .box .text::after,
+    .home .img-item{
+        display: none;
+    }
+    .restaurant .container,
+    .about .container,
+    .book .container{
+        flex-direction: column;
+    }
+    .grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .book{
+        margin-top: 10%;
+        height: auto;
+    }
+    .book .search {
+        width: 100%;
+      }
+    
+      .book .search input {
+        margin-top: 0;
+      }
+    
+      .left, .right {
+        width: 100%;
+      }
+    
+      .wrapper .text {
+        width: 80%;
+      }
+    
+      .room {
+        margin-bottom: 100px;
+      }
+    
+      .room .grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    
+      .restaurant .right {
+        padding: 0;
+        margin-top: 50px;
+      }
+    
+      footer .payment {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    @media only screen and (max-width:768px) {
+        .grid {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      
+        .home .text {
+          margin: 10% 0 0 0;
+        }
+      
+        .home h1 {
+          font-size: 40px;
+        }
+      
+        .about p,
+        .home p {
+          margin: 50px 0 0 0;
+        }
+      
+        .wrapper .text {
+          padding: 10px;
+          height: 600px;
+        }
+      
+        .heading_top {
+          margin-top: 100px;
+        }
+      
+        .heading_top button {
+          display: none;
+        }
+      
+        .restaurant .flex {
+          flex-direction: column-reverse;
+        }
+      }
+
+/*--------------footer-----------------*/
+/*-------------Modal---------------------------*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }  
+
+/*-------------Modal---------------------------*/
+
+/*-----------------Invoice------------------------*/
+
+.invoice-box {
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #eee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    color: #555;
+}
+
+.invoice-box table {
+    width: 100%;
+    line-height: inherit;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.invoice-box table td {
+    padding: 5px;
+    vertical-align: top;
+}
+
+.invoice-box table tr td:nth-child(2) {
+    text-align: right;
+}
+
+.invoice-box table tr.top table td {
+    padding-bottom: 20px;
+}
+
+.invoice-box table tr.top table td.title {
+    font-size: 45px;
+    line-height: 45px;
+    color: #333;
+}
+
+.invoice-box table tr.information table td {
+    padding-bottom: 40px;
+}
+
+.invoice-box table tr.heading td {
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+
+.invoice-box table tr.details td {
+    padding-bottom: 20px;
+}
+
+.invoice-box table tr.item td {
+    border-bottom: 1px solid #eee;
+}
+
+.invoice-box table tr.item.last td {
+    border-bottom: none;
+}
+
+.invoice-box table tr.total td:nth-child(2) {
+    border-top: 2px solid #eee;
+    font-weight: bold;
+}
+.invoice-btns{
+    display: flex;
+    visibility: visible;
+    background-color: white;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.invoice-btn{
+    align-items: center;
+    position: relative;
+    padding: 10px 20px 10px 20px;
+    margin: 10px 0;
+    background-color: #263760;
+}
+
+@media only screen and (max-width: 600px) {
+    .invoice-box table tr.top table td {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    .invoice-box table tr.information table td {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+}
+@media print {
+.invoice-btns * {
+    visibility: hidden;
+}
+.close{
+    visibility: hidden;
+}
+}
+/*-------------------Invoice---------------------------*/
+
+
