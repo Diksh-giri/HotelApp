@@ -16,6 +16,8 @@ Just Download the project.
 
 Just Simply Rum the index.html file for frontend.
 
+Viw the Web Page at 80% Zoom view in Browser for better viewing experience.
+
 Copy or Import the Backend folder in your Java WorkSpace and run it as Spring Boot App. 
 
 Change MYSQL configuration accordingly to your need.
